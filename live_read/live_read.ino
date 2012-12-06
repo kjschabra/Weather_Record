@@ -81,14 +81,17 @@ void loop() {
   //connect to cosm with a key and available feeds from the feed ID
   int ret = cosmclient.get(feed, cosmKey);
   
-  //variable to control the motors rotation
-  rotArm = feed[0].getFloat();
+  //return from cosm exists
+  if (ret > 0) {
+    //variable to control the motors rotation
+    rotArm = feed[0].getFloat();
 
-  //print variation variable in serial monitor  
-  Serial.println(variation);
+    //print variation variable in serial monitor  
+    Serial.println(variation);
   
-  //print out the incoming variable from the feed
-  Serial.println(rotArm);
+    //print out the incoming variable from the feed
+    Serial.println(rotArm);
+  }
   
   //get the base of the machine spinning
   servoDisc.write(rotDisc);
